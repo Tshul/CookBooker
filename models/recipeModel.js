@@ -2,10 +2,10 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./cookbook.db');
 module.exports = {};
 
-const getAllRecipes = (callback) => {
-   db.all("SELECT * FROM recipes", (err, rows) => {
-      callback(err, rows);
-   });
+const getAllRecipes = (sortBy, callback) => {
+   const valid = ['name', 'difficulty', 'category'];
+   const col = valid.includes(sortBy) ? sortBy : 'name';
+   db.all(`SELECT * FROM recipes ORDER BY ${col} ASC`, callback);
 };
 
 const addRecipe = (name, ingredients, instructions, difficulty, category, callback) => {
@@ -24,4 +24,4 @@ const updateRecipe = (id, name, ingredients, instructions, difficulty, category,
 
 const deleteRecipe = (id, callback) => db.run("DELETE FROM recipes WHERE id = ?", [id], callback);
 
-module.exports = { getAllRecipes, addRecipe, updateRecipe };
+module.exports = { getAllRecipes, addRecipe, updateRecipe, deleteRecipe };
