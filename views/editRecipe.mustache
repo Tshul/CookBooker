@@ -7,15 +7,31 @@
 <body>
     <h1>Edit: {{recipe.name}}</h1>
     <form action="/edit/{{recipe.id}}" method="POST">
+        <label>Name:</label>
         <input type="text" name="name" value="{{recipe.name}}" required>
+        
+        <label>Ingredients:</label>
         <textarea name="ingredients" required>{{recipe.ingredients}}</textarea>
+        
+        <label>Instructions:</label>
         <textarea name="instructions" required>{{recipe.instructions}}</textarea>
+        
+        <label>Difficulty:</label>
         <select name="difficulty">
-            <option value="easy">Easy</option>
+            <option value="easy" {{#recipe.difficulty}}selected{{/recipe.difficulty}}>Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
         </select>
-        <button type="submit">Update</button>
+        
+        <label>Category:</label>
+        <select name="category">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="dessert">Dessert</option>
+        </select>
+        
+        <button type="submit">Update Recipe</button>
     </form>
     <a href="/recipe/{{recipe.id}}">Cancel</a>
 </body>

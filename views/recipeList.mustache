@@ -7,7 +7,10 @@
 <body>
     <h1>CookBooker Recipes</h1>
     <div style="text-align: center; margin-bottom: 20px;">
-        Sort by: <a href="/?sort=name">Name</a> | <a href="/?sort=difficulty">Difficulty</a> | <a href="/?sort=category">Category</a>
+        Sort by: 
+        <a href="/?sort=name">Name</a> | 
+        <a href="/?sort=difficulty">Difficulty</a> | 
+        <a href="/?sort=category">Category</a>
     </div>
     <ul>
         {{#recipes}}
@@ -15,13 +18,14 @@
             <a href="/recipe/{{id}}"><strong>{{name}}</strong></a> - {{difficulty}} ({{category}})
             <div style="float: right;">
                 <a href="/edit/{{id}}">Edit</a>
-                <form action="/delete/{{id}}" method="POST" style="display:inline;">
-                    <button type="submit" class="btn-delete" onclick="return confirm('Delete?')">Delete</button>
+                <form action="/delete/{{id}}" method="POST" style="display:inline; margin-left: 10px;">
+                    <button type="submit" style="background-color: #d9534f; color: white; border: none; cursor: pointer;" onclick="return confirm('Delete this recipe?')">Delete</button>
                 </form>
             </div>
         </li>
         {{/recipes}}
     </ul>
+    <hr>
     <a href="/add">Add New Recipe</a>
 </body>
 </html>

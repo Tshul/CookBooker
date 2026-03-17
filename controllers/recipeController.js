@@ -28,10 +28,15 @@ router.get('/edit/:id', (req, res) => {
 });
 
 router.post('/edit/:id', (req, res) => {
+    const recipeId = req.params.id;
     const { name, ingredients, instructions, difficulty, category } = req.body;
-    recipeModel.updateRecipe(req.params.id, name, ingredients, instructions, difficulty, category, (err) => {
-        if (err) return res.status(500).send('Error updating recipe');
-        res.redirect(`/recipe/${req.params.id}`);
+    
+    recipeModel.updateRecipe(recipeId, name, ingredients, instructions, difficulty, category, (err) => {
+        if (err) {
+            console.error("Update Error:", err);
+            return res.status(500).send('Error updating recipe');
+        }
+        res.redirect(`/recipe/${recipeId}`);
     });
 });
 
