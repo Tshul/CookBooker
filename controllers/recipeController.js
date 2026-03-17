@@ -13,4 +13,7 @@ router.post('/add', (req, res) => {
    recipeModel.addRecipe(req.body.name, req.body.ingredients, req.body.instructions, req.body.difficulty, req.body.category, () => res.redirect('/'));
 });
 
+router.post('/delete/:id', (req, res) => {
+   recipeModel.deleteRecipe(req.params.id, () => res.redirect('/'));
+
 module.exports = router;

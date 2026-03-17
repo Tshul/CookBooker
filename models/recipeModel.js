@@ -22,4 +22,6 @@ const updateRecipe = (id, name, ingredients, instructions, difficulty, category,
    db.run(sql, [name, ingredients, instructions, difficulty, category, id], callback);
 };
 
+const deleteRecipe = (id, callback) => db.run("DELETE FROM recipes WHERE id = ?", [id], callback);
+
 module.exports = { getAllRecipes, addRecipe, updateRecipe };
