@@ -1,5 +1,28 @@
-<form action="/add" method="POST">
-  <input name="name" placeholder="Name" required>
-  <textarea name="ingredients" placeholder="Ingredients"></textarea>
-  <button type="submit">Save</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Recipe</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Add New Recipe</h1>
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Recipe Name" required>
+        <textarea name="ingredients" placeholder="Ingredients" required></textarea>
+        <textarea name="instructions" placeholder="Brief Instructions" required></textarea>
+        <select name="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <select name="category">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="dessert">Dessert</option>
+        </select>
+        <button type="submit">Save Recipe</button>
+    </form>
+    <a href="/">Cancel</a>
+</body>
+</html>

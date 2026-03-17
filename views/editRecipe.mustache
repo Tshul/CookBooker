@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Recipe</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Edit: {{recipe.name}}</h1>
+    <form action="/edit/{{recipe.id}}" method="POST">
+        <input type="text" name="name" value="{{recipe.name}}" required>
+        <textarea name="ingredients" required>{{recipe.ingredients}}</textarea>
+        <textarea name="instructions" required>{{recipe.instructions}}</textarea>
+        <select name="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <button type="submit">Update</button>
+    </form>
+    <a href="/recipe/{{recipe.id}}">Cancel</a>
+</body>
+</html>

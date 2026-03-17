@@ -1,5 +1,27 @@
-<h1>CookBooker</h1>
-<ul>
-  {{#recipes}}<li>{{name}}</li>{{/recipes}}
-</ul>
-<a href="/add">Add Recipe</a>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CookBooker</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>CookBooker Recipes</h1>
+    <div style="text-align: center; margin-bottom: 20px;">
+        Sort by: <a href="/?sort=name">Name</a> | <a href="/?sort=difficulty">Difficulty</a> | <a href="/?sort=category">Category</a>
+    </div>
+    <ul>
+        {{#recipes}}
+        <li>
+            <a href="/recipe/{{id}}"><strong>{{name}}</strong></a> - {{difficulty}} ({{category}})
+            <div style="float: right;">
+                <a href="/edit/{{id}}">Edit</a>
+                <form action="/delete/{{id}}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn-delete" onclick="return confirm('Delete?')">Delete</button>
+                </form>
+            </div>
+        </li>
+        {{/recipes}}
+    </ul>
+    <a href="/add">Add New Recipe</a>
+</body>
+</html>

@@ -1,3 +1,17 @@
-<h1>{{recipe.name}}</h1>
-<p>{{recipe.instructions}}</p>
-<a href="/">Back</a>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{recipe.name}}</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>{{recipe.name}}</h1>
+    <p><strong>Category:</strong> {{recipe.category}} | <strong>Difficulty:</strong> {{recipe.difficulty}}</p>
+    <h3>Ingredients:</h3>
+    <p>{{recipe.ingredients}}</p>
+    <h3>Instructions:</h3>
+    <p>{{recipe.instructions}}</p>
+    <hr>
+    <a href="/edit/{{recipe.id}}">Edit</a> | <a href="/">Back to List</a>
+</body>
+</html>
