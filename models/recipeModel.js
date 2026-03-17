@@ -8,4 +8,9 @@ const getAllRecipes = (callback) => {
    });
 };
 
-module.exports = { getAllRecipes };
+const addRecipe = (name, ingredients, instructions, difficulty, category, callback) => {
+   db.run("INSERT INTO recipes (name, ingredients, instructions, difficulty, category) VALUES (?, ?, ?, ?, ?)", 
+   [name, ingredients, instructions, difficulty, category], callback);
+};
+
+module.exports = { getAllRecipes, addRecipe };
