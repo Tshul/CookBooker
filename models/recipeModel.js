@@ -17,4 +17,9 @@ const getRecipeById = (id, callback) => {
    db.get("SELECT * FROM recipes WHERE id = ?", [id], callback);
 };
 
-module.exports = { getAllRecipes, addRecipe };
+const updateRecipe = (id, name, ingredients, instructions, difficulty, category, callback) => {
+   const sql = `UPDATE recipes SET name=?, ingredients=?, instructions=?, difficulty=?, category=? WHERE id=?`;
+   db.run(sql, [name, ingredients, instructions, difficulty, category, id], callback);
+};
+
+module.exports = { getAllRecipes, addRecipe, updateRecipe };
