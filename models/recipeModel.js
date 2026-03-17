@@ -13,4 +13,8 @@ const addRecipe = (name, ingredients, instructions, difficulty, category, callba
    [name, ingredients, instructions, difficulty, category], callback);
 };
 
+const getRecipeById = (id, callback) => {
+   db.get("SELECT * FROM recipes WHERE id = ?", [id], callback);
+};
+
 module.exports = { getAllRecipes, addRecipe };
