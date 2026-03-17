@@ -1,0 +1,1 @@
+This app is used to keep track of recipes you know. You can add, edit, delete, sort and filter recipes.

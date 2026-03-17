@@ -4,7 +4,19 @@ const recipeModel = require('../models/recipeModel');
 
 router.get('/', (req, res) => {
     const sortBy = req.query.sort || 'name';
-    recipeModel.getAllRecipes(sortBy, (err, recipes) => {
+   
+    let filterType = null;
+    let filterValue = null;
+
+    if (req.query.difficulty) {
+        filterType = 'difficulty';
+        filterValue = req.query.difficulty;
+    } else if (req.query.category) {
+        filterType = 'category';
+        filterValue = req.query.category;
+    }
+
+    recipeModel.getAllRecipes(sortBy, filterType, filterValue, (err, recipes) => {
         if (err) return res.status(500).send('Error getting recipes');
         res.render('recipeList', { recipes });
     });

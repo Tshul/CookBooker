@@ -12,11 +12,21 @@ db.serialize(() => {
     )`);
 });
 
-const getAllRecipes = (sortBy, callback) => {
+const getAllRecipes = (sortBy, filterType, filterValue, callback) => {
     const validColumns = ['name', 'difficulty', 'category'];
-    const column = validColumns.includes(sortBy) ? sortBy : 'name';
-    const sql = `SELECT * FROM recipes ORDER BY ${column} ASC`;
-    db.all(sql, (err, rows) => {
+    const sortColumn = validColumns.includes(sortBy) ? sortBy : 'name';
+    
+    let sql = `SELECT * FROM recipes`;
+    let params = [];
+
+    if (validColumns.includes(filterType) && filterValue) {
+        sql += ` WHERE ${filterType} = ?`;
+        params.push(filterValue);
+    }
+
+    sql += ` ORDER BY ${sortColumn} ASC`;
+
+    db.all(sql, params, (err, rows) => {
         callback(err, rows);
     });
 };
