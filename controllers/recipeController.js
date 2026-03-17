@@ -8,4 +8,9 @@ router.get('/', (req, res) => {
    });
 });
 
+router.get('/add', (req, res) => res.render('addRecipe'));
+router.post('/add', (req, res) => {
+   recipeModel.addRecipe(req.body.name, req.body.ingredients, req.body.instructions, req.body.difficulty, req.body.category, () => res.redirect('/'));
+});
+
 module.exports = router;
